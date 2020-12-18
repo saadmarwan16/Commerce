@@ -1,3 +1,239 @@
 body {
     padding: 10px;
 }
+
+.we-converse {
+    color: #723dbe;
+}
+
+.nav-item {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+/* @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900'); */
+body{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    background: #eee;
+    color:#666;
+}
+
+.login-container{
+    height: 100vh;
+    width: 100%;
+}
+
+.login-form{
+    margin: auto;
+    width: 370px;
+    padding: 15px;
+    max-width: 100%;
+}
+
+.login-form .form-control{
+    font-size: 15px;
+    min-height: 48px;
+    font-weight: 500;
+}
+
+.login-form a{
+    text-decoration: none;
+    color:#666;
+}
+
+.login-form a:hover{
+    color:#723dbe;
+}
+
+.forgot-link{
+    font-size: 13px;
+}
+
+.form-control:focus{
+    border-color:#723dbe;
+    box-shadow: 0 0 0 0.2rem rgba(114,61,190,.25);
+}
+
+.btn-custom{
+    background: #723dbe;
+    border-color:#723dbe;
+    color:#fff;
+    font-size: 15px;
+    font-weight: 600;
+    min-height: 48px;
+}
+
+.btn-custom:focus,
+.btn-custom:hover,
+.btn-custom:active,
+.btn-custom:active:focus{
+    background: #54229d;
+    border-color: #54229d;
+    color:#fff;
+}
+
+.btn-custom:focus{
+    box-shadow: 0 0 0 0.2rem rgba(114,61,190,.25);
+}
+
+.topbar {
+    background-color: #723dbe;
+    height: 40px;
+}
+
+.dropdown-btn {
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+    /*display: inline;*/
+    /*position: relative;*/
+    float: right;
+    width: 400px;
+    height: 315px;
+}
+
+.button-wrapper {
+    width: 100%;
+    height: 35px;
+}
+
+.navbar {
+    height: 40px;
+    left: 30%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: transparent !important;
+    display: inline-flex;
+}
+
+.btn {
+    height: 25px;
+    padding: 0;
+}
+
+.form-control {
+    height: 25px;
+}
+
+.initial, .profile-initial {
+    text-align: center;
+    background-color: gray;
+    color: white;
+    border: none;
+    box-shadow: none;
+    border-radius: 3px;
+}
+
+.initial {
+    width: 40px;
+    height: 30px;
+    position: relative;
+    float: right;
+    right: 10px;
+    top: 5px;
+}
+
+.profile-initial {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    margin: 10px;
+    font-size: 30px;
+}
+
+.profile-initial:hover {
+    background-color: green;
+}
+
+.initial-link, .name-of-user, .status {
+    color: white;
+}
+
+.initial-link:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown-list {
+    margin: 0;
+    padding: 0;
+    border: 1px solid gray;
+    height: 180px;
+    width: 100%;
+}
+
+div.active {
+    transform: perspective(1000px) rotateX(0deg);
+}
+
+.dropdown-list li {
+    list-style: none;
+}
+
+.dropdown-list li a {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #723dbe;
+    color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-list li a:hover {
+    background-color: #0d7ad0;
+}
+
+.name-of-user-wrapper {
+    height: 100px;
+    padding: 10px;
+    margin: 0px;
+    width: 100%;
+}
+
+.options-wrapper {
+    width: 100%;
+    height: 280px;
+    padding-right: 10px;
+    transform-origin: top;
+    transform: perspective(1000px) rotateX(-90deg);
+    transition: 0.5s;
+    /*border: 1px solid #723dbe;*/
+    background-color: #723dbe;
+    /*z-index: 1;*/
+}
+
+.main-body {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 40px;
+    z-index: -1;
+}
+
+.menu {
+    background-color: #723dbe;
+    border-top: 1px solid white;
+    display: none;
+    height: 100vh;
+}
+
+/*.name-of-user {*/
+/*    display: block;*/
+/*}*/
+
+/*.status {*/
+/*    display: block;*/
+/*}*/
+
+.chat-section {
+    background-color: white;
+}
+
+.no {
+    display: inline;
+    /*width: 50px;*/
+    /*height: 30px;*/
+}

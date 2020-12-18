@@ -1,7 +1,46 @@
 {% extends "auctions/layout.html" %}
 
-{% block body %}
-    <h2>Active Listings</h2>
+{% block title %}
+    Home
+{% endblock %}
 
-    TODO
+{% block body %}
+    <!-- <h2>Active Listings</h2> -->
+
+    <div class="topbar">
+        <nav class="navbar navbar-light bg-light">
+            <a href="{% url 'index' %}">Home</a>
+            
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search active listings" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+             </form>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row main-body">
+            <div class="col-sm-3 menu">
+                {% if user.is_authenticated %}
+                    Signed in as <strong>{{ user.username }}</strong>.
+                {% else %}
+                    Not signed in.
+                {% endif %}
+
+                <hr>
+
+                <ul class="dropdown-list">
+                    <li><a href="{% url 'index' %}">Active Listings</a></li>
+                    <li><a href="{% url 'categories' %}">Categories</a></li>
+                    <li><a href="{% url 'watchlist' %}">Your Watchlist</a></li>
+                    <li><a href="{% url 'create_listing' %}">Create Listing</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </div>
+
+            <div class="col-12 col-sm-9 chat-section">
+
+            </div>
+        </div>
+    </div>
 {% endblock %}

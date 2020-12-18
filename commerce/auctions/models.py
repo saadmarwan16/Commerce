@@ -4,7 +4,7 @@ from django.db import models
 
 class User(AbstractUser):
     def __str__(self):
-        return f"{self.first_name} with username {self.username} has an id of {self.id}"
+        return f"{self.username} has an id of {self.id}"
 
 
 class AuctionListings(models.Model):
