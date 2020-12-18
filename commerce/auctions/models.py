@@ -3,22 +3,24 @@ from django.db import models
 
 
 class User(AbstractUser):
-    pass
+    def __str__(self):
+        return f"{self.first_name} with username {self.username} has an id of {self.id}"
 
 
 class AuctionListings(models.Model):
-    name = models.CharField(max_length=128)
-    price = models.DecimalField(max_digits=None, decimal_places=2)
-    user_id = models.ForeignKey(User, ondelete=models.CASCADE, related_name="auctioned_items")
-    time_auctioned = models.DateTimeField(auto_now=False, auto_now_add=False)
+    name = models.CharField(max_length=128, unique=True)
+    price = models.DecimalField(max_digits=64, decimal_places=2)
+    time_auctioned = models.DateTimeField(auto_now=False, auto_now_add=True)
+    last_updated = models.DateTimeField(auto_now=True, auto_now_add=False)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="auctioned_items")
 
     def __str__(self):
         return f"{self.user_id} posted {self.name} for {self.price} at {self.time_auctioned}"
 
 
 class Bids(models.Model):
-    price = models.DecimalField(max_digits=None, decimal_places=2)
-    time_bid = models.DateTimeField(auto_now=False, auto_now_add=False)
+    price = models.DecimalField(max_digits=64, decimal_places=2)
+    time_bid = models.DateTimeField(auto_now=False, auto_now_add=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_bids")
     auction_id = models.ForeignKey(AuctionListings, on_delete=models.CASCADE, related_name="item_bids")
 
@@ -28,7 +30,7 @@ class Bids(models.Model):
 
 class Comments(models.Model):
     content = models.CharField(max_length=1280)
-    time_commented = models.DateTimeField(auto_now=False, auto_now_add=False)
+    time_commented = models.DateTimeField(auto_now=False, auto_now_add=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_comments")
     auction_id = models.ForeignKey(AuctionListings, on_delete=models.CASCADE, related_name="item_comments")
 
@@ -37,9 +39,9 @@ class Comments(models.Model):
 
 
 class WatchList(models.Model):
-    user_id = models.ForeignKey(User)
-    time_watchlisted = models.DateTimeField(auto_now=False, auto_now_add=False)
-    auction_id = models.ForeignKey(AuctionListings, ondelete=models.CASCADE, related_name="item_watchlists")
+    time_watchlisted = models.DateTimeField(auto_now=False, auto_now_add=True)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_watchlisted_items")
+    auction_id = models.ForeignKey(AuctionListings, on_delete=models.CASCADE, related_name="item_watchlists")
 
     def __str__(self):
         return f"{self.user_id} watchlisted {self.auction_id} at {self.time_watchlisted}"
