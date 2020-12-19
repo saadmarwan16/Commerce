@@ -1,9 +1,90 @@
-body {
-    padding: 10px;
+.status {
+    color: white;
+    font-weight: bold;
+    margin-top: 15px;
+    padding-top: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
 }
 
-.we-converse {
-    color: #723dbe;
+.list-item {
+    font-weight: bold;
+    list-style-type: none;
+    padding: 10px 0 10px 0;
+    margin: 10px 0 10px 0;
+}
+
+.list-link {
+    color: white;
+}
+
+.list-link:hover {
+    color: rgb(90, 241, 20);
+    text-decoration: none;
+}
+
+.home-link {
+    color: white;
+    margin: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.home-link:hover {
+    color: rgb(90, 241, 20);
+    text-decoration: none;
+}
+
+.auctions {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: white;
+}
+
+.menu {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.side-menu {
+    position: fixed;
+}
+
+.menu-list {
+    padding-left: 0;
+}
+
+.search {
+    background-color: transparent !important;
+    height: 40px;
+    left: 30%;
+    display: inline-flex;
+}
+
+@media (min-width: 0px) {
+    .search {
+        left: 0%;
+    }
+}
+
+@media (min-width: 576px) {
+    .search {
+        left: 10%
+    }
+}
+
+@media (min-width: 992px) {
+    .search {
+        left: 40%
+    }
+}
+
+.search-bar, .search-button {
+    height: 30px;
+}
+
+.product-section {
+    background-color: black;
 }
 
 .nav-item {
@@ -78,7 +159,8 @@ body{
 }
 
 .topbar {
-    background-color: #723dbe;
+    /* position: fixed; */
+    background-color: #440997e5;
     height: 40px;
 }
 
@@ -97,143 +179,4 @@ body{
 .button-wrapper {
     width: 100%;
     height: 35px;
-}
-
-.navbar {
-    height: 40px;
-    left: 30%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: transparent !important;
-    display: inline-flex;
-}
-
-.btn {
-    height: 25px;
-    padding: 0;
-}
-
-.form-control {
-    height: 25px;
-}
-
-.initial, .profile-initial {
-    text-align: center;
-    background-color: gray;
-    color: white;
-    border: none;
-    box-shadow: none;
-    border-radius: 3px;
-}
-
-.initial {
-    width: 40px;
-    height: 30px;
-    position: relative;
-    float: right;
-    right: 10px;
-    top: 5px;
-}
-
-.profile-initial {
-    width: 60px;
-    height: 60px;
-    padding: 0;
-    margin: 10px;
-    font-size: 30px;
-}
-
-.profile-initial:hover {
-    background-color: green;
-}
-
-.initial-link, .name-of-user, .status {
-    color: white;
-}
-
-.initial-link:hover {
-    color: white;
-    text-decoration: none;
-}
-
-.dropdown-list {
-    margin: 0;
-    padding: 0;
-    border: 1px solid gray;
-    height: 180px;
-    width: 100%;
-}
-
-div.active {
-    transform: perspective(1000px) rotateX(0deg);
-}
-
-.dropdown-list li {
-    list-style: none;
-}
-
-.dropdown-list li a {
-    display: block;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    background-color: #723dbe;
-    color: white;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.dropdown-list li a:hover {
-    background-color: #0d7ad0;
-}
-
-.name-of-user-wrapper {
-    height: 100px;
-    padding: 10px;
-    margin: 0px;
-    width: 100%;
-}
-
-.options-wrapper {
-    width: 100%;
-    height: 280px;
-    padding-right: 10px;
-    transform-origin: top;
-    transform: perspective(1000px) rotateX(-90deg);
-    transition: 0.5s;
-    /*border: 1px solid #723dbe;*/
-    background-color: #723dbe;
-    /*z-index: 1;*/
-}
-
-.main-body {
-    height: 100vh;
-    width: 100%;
-    position: absolute;
-    top: 40px;
-    z-index: -1;
-}
-
-.menu {
-    background-color: #723dbe;
-    border-top: 1px solid white;
-    display: none;
-    height: 100vh;
-}
-
-/*.name-of-user {*/
-/*    display: block;*/
-/*}*/
-
-/*.status {*/
-/*    display: block;*/
-/*}*/
-
-.chat-section {
-    background-color: white;
-}
-
-.no {
-    display: inline;
-    /*width: 50px;*/
-    /*height: 30px;*/
 }
