@@ -1,3 +1,18 @@
+.topbar {
+    position: fixed;
+    background-color: #440997e5;
+    height: 50px;
+    width: 100%;
+}
+
+.sub-topbar, .topbar-row {
+    height: 100%;
+}
+
+.home-link-container {
+    padding: 10px 15px;
+}
+
 .status {
     color: white;
     font-weight: bold;
@@ -44,9 +59,13 @@
 
 .menu {
     background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    height: calc(100vh - 50px);
 }
 
 .side-menu {
+    width: 100%;
+    height: 100;
     position: fixed;
 }
 
@@ -89,9 +108,16 @@
     height: 30px;
 }
 
+.main-body-container {
+    position: relative;
+    top: 50px;
+}
+
 .listings {
     padding: 10px;
     text-align: center;
+    left: 33.333333%;
+    z-index: -1;
 }
 
 .listing {
@@ -150,7 +176,7 @@ body{
 }
 
 .login-container{
-    height: calc(100vh - 40px);
+    height: calc(100vh - 50px);
     width: 100%;
 }
 
@@ -205,10 +231,4 @@ body{
 
 .btn-custom:focus{
     box-shadow: 0 0 0 0.2rem rgba(114,61,190,.25);
-}
-
-.topbar {
-    /* position: fixed; */
-    background-color: #440997e5;
-    height: 40px;
 }

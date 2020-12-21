@@ -1,4 +1,4 @@
-<div class="side-menu">
+<!-- <div class="side-menu"> -->
     <h2 class="auctions">Auctions</h2>
     {% if user.is_authenticated %}
         <div class="status">Signed in as <strong>{{ user.username }}</strong>.</div>
@@ -23,4 +23,4 @@
             <li class="list-item"><a class="list-link" href="{% url 'logout' %}">Logout</a></li>
         {% endif %}
     </ul>
-</div>
+<!-- </div> -->

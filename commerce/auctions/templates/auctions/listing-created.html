@@ -1,0 +1,22 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    Listing Created
+{% endblock %}
+
+{% block body %}
+    <h3>Your listing has been created</h3>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div col-3>
+                <a href="{% url 'create_listing' %}">Create another listing</a>
+            </div>
+            <div col-3>
+                <a href="{% url 'index' %}">Go to home</a>
+            </div>
+            <div col-3>
+                <a href="{% url 'user_listings' user.id %}">View your listings</a>
+            </div>
+        </div>
+    </div>

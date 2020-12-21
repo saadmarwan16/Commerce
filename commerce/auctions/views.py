@@ -4,11 +4,13 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import User
+from .models import User, AuctionListings, Bids, Comments, WatchList
 
 
 def index(request):
-    return render(request, "auctions/index.html")
+    return render(request, "auctions/index.html", {
+        "listings": AuctionListings.objects.all()
+    })
 
 
 def login_view(request):
@@ -65,7 +67,16 @@ def register(request):
 
 def create_listing(request):
     if request.method == "POST":
-        pass
+        name = request.POST["title"]
+        description = request.POST["description"]
+        category = request.POST["category"]
+        price = request.POST["bid"]
+        image = request.POST["image"]
+        
+        listing = AuctionListings(name=name, description=description, category=category, price=price)
+        listing.save()
+
+        return render("auctions/listing-created.html")
 
     return render(request, "auctions/create-listing.html")
 
@@ -76,3 +87,17 @@ def categories(request):
 
 def watchlist(request):
     return render(request, "auctions/watchlist.html")
+
+
+def listing(request, num):
+    return render(request, "actions/listing.html")
+
+
+def listing_created(request):
+    return render(request, "auctions/listing-created.html")
+
+
+def user_listing(request, id):
+    return render(request, "auctions/user-listings.html", {
+        "listings": AuctionListings.objects.all(user_id=id)
+    })
