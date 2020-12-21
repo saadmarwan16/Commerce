@@ -115,6 +115,7 @@
 
 .listings {
     /* padding: 10px; */
+    position: absolute;
     text-align: center;
     left: 33.333333%;
     z-index: -1;
@@ -126,6 +127,10 @@
     margin-bottom: 15px;
     border-radius: 3px;
 }
+
+/* .create-listing {
+    position: fixed;
+} */
 
 #active-listings {
     margin-bottom: 25px;

@@ -11,7 +11,7 @@
                 {% include "auctions/sub-layout.html" %}
             </div>
 
-            <div class="col-12 col-md-8 listings">
+            <div class="col-12 col-md-8 listings create-listing">
                 <div class="d-flex justify-content-center align-items-center login-container">
                     <form action="{% url 'listing_created' user.id %}" class="login-form text-center" method="post">
                         {% csrf_token %}

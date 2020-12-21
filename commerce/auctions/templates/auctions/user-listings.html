@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-    Your Listings
+    My Listings
 {% endblock %}
 
 {% block body %}
@@ -14,7 +14,7 @@
             </div>
 
             <div class="col-12 col-md-8 listings">
-                <h2 id="active-listings">Active Listings</h2>
+                <h2 id="active-listings">My Listings</h2>
                 {% for listing in listings %}
                     <div class="listing">
                         <a href="{% url 'listing' %}">

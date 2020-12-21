@@ -1,4 +1,4 @@
-{% extends "auctions/layout.html" %}
+{% extends "auctions/main-layout.html" %}
 
 {% block title %}
     Listing Created
@@ -16,7 +16,8 @@
                 <a href="{% url 'index' %}">Go to home</a>
             </div>
             <div col-3>
-                <a href="{% url 'user_listings' user.id %}">View your listings</a>
+                <a href="{% url 'user_listings' user.id %}">View my listings</a>
             </div>
         </div>
     </div>
+{% endblock %}

@@ -106,7 +106,7 @@ def listing_created(request, user_id):
 
 
 # Show all the listings that a user has created
-def user_listing(request, id):
+def user_listings(request, id):
     return render(request, "auctions/user-listings.html", {
-        "listings": AuctionListings.objects.get(user_id=id)
+        "listings": AuctionListings.objects.filter(user_id=id)
     })
