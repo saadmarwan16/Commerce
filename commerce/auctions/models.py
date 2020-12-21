@@ -8,10 +8,13 @@ class User(AbstractUser):
 
 
 class AuctionListings(models.Model):
-    name = models.CharField(max_length=128, unique=True)
+    name = models.TextField()
+    description = models.TextField()
+    category = models.CharField(max_length=64)
     price = models.DecimalField(max_digits=64, decimal_places=2)
-    time_auctioned = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True, auto_now_add=False)
+    time_auctioned = models.DateTimeField(auto_now=False, auto_now_add=True)
+    image = models.ImageField(upload_to="listing-image", blank=True, null=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="auctioned_items")
 
     def __str__(self):
@@ -29,7 +32,7 @@ class Bids(models.Model):
 
 
 class Comments(models.Model):
-    content = models.CharField(max_length=1280)
+    content = models.TextField()
     time_commented = models.DateTimeField(auto_now=False, auto_now_add=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_comments")
     auction_id = models.ForeignKey(AuctionListings, on_delete=models.CASCADE, related_name="item_comments")

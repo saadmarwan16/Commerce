@@ -7,22 +7,27 @@
 {% block body %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-4 menu">
+            <div class="col-12 col-md-4 menu">
                 {% include "auctions/sub-layout.html" %}
             </div>
 
-            <div class="col-8">
+            <div class="col-12 col-md-8">
                 <div class="d-flex justify-content-center align-items-center login-container">
                     <form class="login-form text-center" method="post">
+                        {% csrf_token %}
+
                         <h1 class="mb-5 font-weight-light text-uppercase">Create Listing</h1>
                         <div class="form-group">
-                            <input type="text" class="form-control rounded-pill form-control-lg" placeholder="Title of listing" name="username" required>
+                            <input type="text" autofocus class="form-control rounded-pill form-control-lg" placeholder="Title of listing" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control rounded-pill form-control-lg" placeholder="Description of listing" name="description" required>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control rounded-pill form-control-lg" placeholder="Starting bid" name="username" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control rounded-pill form-control-lg" placeholder="Url for listing image" name="username" required>
+                            <input type="text" class="form-control rounded-pill form-control-lg" placeholder="Url for listing image" name="username">
                         </div>
                         <div class="form-group">
                             <input class="form-control rounded-pill form-control-lg" name="category" list="categories" placeholder="Listing Category">
