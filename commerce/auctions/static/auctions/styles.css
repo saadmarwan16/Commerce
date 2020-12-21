@@ -114,7 +114,7 @@
 }
 
 .listings {
-    padding: 10px;
+    /* padding: 10px; */
     text-align: center;
     left: 33.333333%;
     z-index: -1;

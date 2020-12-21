@@ -20,6 +20,7 @@
         {% if user.is_authenticated %}
             <li class="list-item"><a class="list-link" href="{% url 'watchlist' %}">Your Watchlist</a></li>
             <li class="list-item"><a class="list-link" href="{% url 'create_listing' %}">Create Listing</a></li>
+            <li class="list-item"><a class="list-link" href="{% url 'user_listing' user.id %}">My Listings</a></li>
             <li class="list-item"><a class="list-link" href="{% url 'logout' %}">Logout</a></li>
         {% endif %}
     </ul>
