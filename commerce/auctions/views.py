@@ -84,10 +84,13 @@ def watchlist(request):
     return render(request, "auctions/watchlist.html")
 
 
-def listing(request):
-    return render(request, "auctions/listing.html")
+def listing(request, id):
+    return render(request, "auctions/listing.html", {
+        "listing": AuctionListings.objects.get(pk=id)
+    })
 
 
+# Creates listing and store it in the database
 def listing_created(request, user_id):
     name = request.POST["title"]
     description = request.POST["description"]

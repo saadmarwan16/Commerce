@@ -11,7 +11,7 @@
                 {% include "auctions/sub-layout.html" %}
             </div>
 
-            <div class="col-12 col-md-8 listings create-listing">
+            <div class="col-12 col-md-8 listings">
                 <div class="d-flex justify-content-center align-items-center login-container">
                     <form action="{% url 'listing_created' user.id %}" class="login-form text-center" method="post">
                         {% csrf_token %}
@@ -25,9 +25,6 @@
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control rounded-pill form-control-lg" placeholder="Starting bid" name="bid" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control rounded-pill form-control-lg" placeholder="Url for listing image" name="image">
                         </div>
                         <div class="form-group">
                             <input class="form-control rounded-pill form-control-lg" name="category" list="categories" placeholder="Listing Category">
@@ -51,6 +48,10 @@
                                 <option value="Toys">
                                 <option value="Video Games">
                             </datalist>
+                        </div>
+                        <div class="listing-image-container">
+                            <p class="image-instruction">Choose the image file to use for this listing</p>
+                            <input type="file" name="image">
                         </div>
                         
                         <button type="submit" class="btn mt-5 rounded-pill btn-lg btn-custom btn-block text-uppercase">Create Listing Now</button>

@@ -17,8 +17,8 @@
                 <h2 id="active-listings">Active Listings</h2>
                 {% for listing in listings %}
                     <div class="listing">
-                        <a href="{% url 'listing' %}">
-                            <div class="image-container"><img class="image" src="{% static 'auctions/bronze_award.jpg' %}" alt="Image of a product"></div>
+                        <a href="{% url 'listing' listing.id %}">
+                            <div class="image-container"><img class="image" src="{{ listing.image.url }}" alt="Image of a product"></div>
                             <div class="info-container">
                                 <p class="info info-top"><strong>{{ listing.name }}</strong></p>
                                 <p class="info"><strong>Category: </strong>{{ listing.category }}</p>
