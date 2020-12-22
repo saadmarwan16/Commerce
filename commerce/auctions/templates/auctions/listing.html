@@ -14,14 +14,16 @@
             </div>
 
             <div class="col-12 col-md-8 listings">
-                <div class="listing-profiile">
+                <div class="listing-profile">
                     <div class="listing-profile-image-container">
                         <img class="listing-profile-image" src="{% static 'auctions/bronze_award.jpg' %}" alt="Image of a product">
                     </div>
 
                     <div class="listing-main-details">
                         <h2 class="listing-name"><strong>Listing:</strong> {{ listing.name }}</h2>
-                        <button class="watchlist-btn btn btn-success" type="submit">Add to watchlist</button>
+                        {% if user.is_authenticated %}
+                            <button type="submit" class="watchlist-btn btn btn-success">Add to watchlist</button>
+                        {% endif %}
                         <h3 class="listing-details-heading">Details</h3>
                         <div class="listing-sub-details">
                             <p><strong>Price: </strong>${{ listing.price }}</p>
@@ -34,13 +36,41 @@
                 </div>
 
                 <div class="bidding">
-                    <p>Place a bid</p>
-                    <p>2 bids placed so far, your bid is the current bid</p>
-                    <input type="text">
-                    <button type="submit" class="btn btn-success">Place bid</button>
+                    <p class="bids-placed"><strong style="position: relative; left:20px">2 bids placed so far, your bid is the current bid</strong></p>
+                    {% if user.is_authenticated %}
+                        <div class="bid">
+                            <p style="margin-bottom: 0;">Recommended format <strong class="value-green">40.00</strong> <strong>NOT</strong> <strong class="value-red">$40.00</strong></p>
+                            <form action="{% url 'bid' listing.id user.id %}" method="post"></form>
+                                {% csrf_token %}
+                                
+                                <input type="text" name="bid" autofocus placeholder="Enter your bid">
+                                <button type="submit" class="btn btn-success">Place bid</button>
+                            </form>
+                        </div>
+                    {% endif %}
                 </div>
                 
-                <p><strong>Description: </strong>{{ listing.description }}</p>
+                <p style="text-align: left;"><strong>Description: </strong>{{ listing.description }}</p>
+
+                <div class="comments-container">
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'comment' listing.id user.id %}" class="comment-form" method="post">
+                            {% csrf_token %}
+
+                            <textarea class="comment-form-input" name="comment" placeholder="Enter comment here"></textarea>
+                            <button type="submit" class="comment-form-btn btn btn-success">Post comment</button>
+                        </form>
+                    {% endif %}
+
+                    <ul class="comments">
+                        <li class="comment">Comment #1</li>
+                        <li class="comment">Comment #1</li>
+                        <li class="comment">Comment #1</li>
+                        <li class="comment">Comment #1</li>
+                        <li class="comment">Comment #1</li>
+                        <li class="comment">Comment #1</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

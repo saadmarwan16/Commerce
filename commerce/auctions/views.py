@@ -116,3 +116,33 @@ def user_listings(request, id):
     return render(request, "auctions/user-listings.html", {
         "listings": AuctionListings.objects.filter(user_id=id)
     })
+
+
+# Takes a user's comment and then add it to the database
+def comment(request, listing_id, user_id):
+    user_comment = request.POST["comment"]
+    user = User.objects.get(pk=user_id)
+    listing = AuctionListings.objects.get(pk=listing_id)
+
+    new_comment = Comments(content=user_comment, user=user, auction=listing)
+    new_comment.save()
+
+    return HttpResponseRedirect(reverse("auctions/listings.html", kwarg={"id": listing_id}))
+
+
+def bid(request, listing_id, user_id):
+    user_bid = request.POST["bid"]
+
+    while True:
+        if user_bid[0] in [., 0, 1, 2, 3, 4, 5, 6, 7, 8, 9] or len(user_bid) == 0:
+            break
+
+        user_bid = user_bid[1:]
+
+    user = User.objects.get(pk=user_id)
+    listing = AuctionListings.objects.get(pk=listing_id)
+
+    new_bid = Bids(price=user_bid, user=user, auction=listing)
+    new_bid.save()
+
+    return HttpResponseRedirect(reverse("auctions/listings.html", kwarg={"id": listing_id}))
