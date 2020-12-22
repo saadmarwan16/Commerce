@@ -1,8 +1,47 @@
 {% extends "auctions/main-layout.html" %}
 
+{% load static %}
+
 {% block title %}
     Listing
 {% endblock %}
 
 {% block body %}
+    <div class="container-fluid main-body-container">
+        <div class="row">
+            <div class="col-12 col-md-4 menu">
+                {% include "auctions/sub-layout.html" %}
+            </div>
+
+            <div class="col-12 col-md-8 listings">
+                <div class="listing-profiile">
+                    <div class="listing-profile-image-container">
+                        <img class="listing-profile-image" src="{% static 'auctions/bronze_award.jpg' %}" alt="Image of a product">
+                    </div>
+
+                    <div class="listing-main-details">
+                        <h2 class="listing-name"><strong>Listing:</strong> {{ listing.name }}</h2>
+                        <button class="watchlist-btn btn btn-success" type="submit">Add to watchlist</button>
+                        <h3 class="listing-details-heading">Details</h3>
+                        <div class="listing-sub-details">
+                            <p><strong>Price: </strong>${{ listing.price }}</p>
+                            <p><strong>Listed by: </strong>{{ user_created }}</p>
+                            <p><strong>Category: </strong>{{ listing.category }}</p>
+                            <p><strong>First posted: </strong>{{ listing.time_auctioned }}</p>
+                            <p><strong>Last updated: </strong>{{ listing.last_updated }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bidding">
+                    <p>Place a bid</p>
+                    <p>2 bids placed so far, your bid is the current bid</p>
+                    <input type="text">
+                    <button type="submit" class="btn btn-success">Place bid</button>
+                </div>
+                
+                <p><strong>Description: </strong>{{ listing.description }}</p>
+            </div>
+        </div>
+    </div>
 {% endblock %}
