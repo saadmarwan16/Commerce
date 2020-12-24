@@ -16,7 +16,11 @@
             <div class="col-12 col-md-8 listings">
                 <div class="listing-profile">
                     <div class="listing-profile-image-container">
-                        <img class="listing-profile-image" src="{% static 'auctions/bronze_award.jpg' %}" alt="Image of a product">
+                        {% if listing.image %}
+                            <div class="image-container"><img class="image" src="{{ listing.image.url }}" alt="Image of product"></div>
+                        {% else %}
+                            <div class="image-container"><img class="image" src="" alt="Image of product"></div>
+                        {% endif %}
                     </div>
 
                     <div class="listing-main-details">
@@ -36,11 +40,17 @@
                 </div>
 
                 <div class="bidding">
-                    <p class="bids-placed"><strong style="position: relative; left:20px">2 bids placed so far, your bid is the current bid</strong></p>
+                    <p class="bids-placed"><strong style="position: relative; left:20px">
+                        {% if current_bid %}
+                            The current bid is ${{ current_bid.price }}
+                        {% else %}
+                            There is currently no bid
+                        {% endif %}
+                    </strong></p>
                     {% if user.is_authenticated %}
                         <div class="bid">
                             <p style="margin-bottom: 0;">Recommended format <strong class="value-green">40.00</strong> <strong>NOT</strong> <strong class="value-red">$40.00</strong></p>
-                            <form action="{% url 'bid' listing.id user.id %}" method="post"></form>
+                            <form action="{% url 'bid' listing.id user.id %}" method="post">
                                 {% csrf_token %}
                                 
                                 <input type="text" name="bid" autofocus placeholder="Enter your bid">
@@ -62,13 +72,13 @@
                         </form>
                     {% endif %}
 
+                    <h2 style="width: 100%; text-align: center">Comments</h2>
                     <ul class="comments">
-                        <li class="comment">Comment #1</li>
-                        <li class="comment">Comment #1</li>
-                        <li class="comment">Comment #1</li>
-                        <li class="comment">Comment #1</li>
-                        <li class="comment">Comment #1</li>
-                        <li class="comment">Comment #1</li>
+                        {% for comment in comments %}
+                            <li class="comment">{{ comment.content }}</li>
+                        {% empty %}
+                            <li class="comment">This product has no comments</li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

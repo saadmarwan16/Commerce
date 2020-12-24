@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render
 from django.urls import reverse
 
@@ -86,10 +86,17 @@ def watchlist(request):
 
 def listing(request, id):
     user = User.objects.get(auctioned_items__id=id)
+    comments = Comment.objects.filter(auction_id__id=id)
+    current_bid = Bid.objects.filter(auction_id__id=id).order_by("-price")
+
+    if len(current_bid) > 0:
+        current_bid = current_bid[0]
     
     return render(request, "auctions/listing.html", {
         "listing": AuctionListing.objects.get(pk=id),
-        "user_created": user.username
+        "user_created": user.username,
+        "comments": comments,
+        "current_bid": current_bid
     })
 
 
@@ -127,22 +134,27 @@ def comment(request, listing_id, user_id):
     new_comment = Comment(content=user_comment, user=user, auction=listing)
     new_comment.save()
 
-    return HttpResponseRedirect(reverse("auctions/listings.html", kwarg={"id": listing_id}))
+    return HttpResponseRedirect(reverse("listing", kwargs={"id": listing_id}))
 
 
 def bid(request, listing_id, user_id):
     user_bid = request.POST["bid"]
+    user_bid = float(user_bid)
+    listing = AuctionListing.objects.get(pk=listing_id)
 
-    while True:
-        if user_bid[0] in [".", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9] or len(user_bid) == 0:
-            break
+    if user_bid < listing.price:
+        raise Http404("You cannot bid less than the price of the item")
 
-        user_bid = user_bid[1:]
+    current_bid = Bid.objects.filter(auction_id__id=listing_id).order_by("-price")
+
+    if len(current_bid) > 0:
+        current_bid = current_bid[0]
+
+        if user_bid < current_bid.price:
+            raise Http404("You cannot bid less than the current bid")
 
     user = User.objects.get(pk=user_id)
-    listing = AuctionListings.objects.get(pk=listing_id)
-
     new_bid = Bid(price=user_bid, user=user, auction=listing)
     new_bid.save()
 
-    return HttpResponseRedirect(reverse("auctions/listings.html", kwarg={"id": listing_id}))
+    return HttpResponseRedirect(reverse("listing", kwargs={"id": listing_id}))
