@@ -193,6 +193,21 @@
     position: relative;
 }
 
+.listing-created {
+    position: fixed;
+    width: 100%;
+    top: 80px;
+    text-align: center;
+}
+
+.listing-created-options {
+    position: relative;
+    top: 150px;
+    padding: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .bidding {
     position: relative;
     right: 25px;

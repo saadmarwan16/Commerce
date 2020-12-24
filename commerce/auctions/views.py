@@ -4,13 +4,13 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import User, AuctionListings, Bids, Comments, WatchList
+from .models import User, AuctionListing, Bid, Comment, WatchList
 
 
 # Home page, this page displays the current active listings and their information
 def index(request):
     return render(request, "auctions/index.html", {
-        "listings": AuctionListings.objects.all()
+        "listings": AuctionListing.objects.all()
     })
 
 
@@ -88,7 +88,7 @@ def listing(request, id):
     user = User.objects.get(auctioned_items__id=id)
     
     return render(request, "auctions/listing.html", {
-        "listing": AuctionListings.objects.get(pk=id),
+        "listing": AuctionListing.objects.get(pk=id),
         "user_created": user.username
     })
 
@@ -99,13 +99,13 @@ def listing_created(request, user_id):
     description = request.POST["description"]
     category = request.POST["category"]
     price = request.POST["bid"]
-    image = request.POST["image"]
+    image = request.FILES["image"]
 
     # Get the user who just created the listing
     print(user_id)
     user = User.objects.get(pk=user_id)
     
-    listing = AuctionListings(name=name, description=description, category=category, price=price, image=image, user=user)
+    listing = AuctionListing(name=name, description=description, category=category, price=price, image=image, user=user)
     listing.save()
 
     return render(request, "auctions/listing-created.html")
@@ -114,7 +114,7 @@ def listing_created(request, user_id):
 # Show all the listings that a user has created
 def user_listings(request, id):
     return render(request, "auctions/user-listings.html", {
-        "listings": AuctionListings.objects.filter(user_id=id)
+        "listings": AuctionListing.objects.filter(user_id=id)
     })
 
 
@@ -122,9 +122,9 @@ def user_listings(request, id):
 def comment(request, listing_id, user_id):
     user_comment = request.POST["comment"]
     user = User.objects.get(pk=user_id)
-    listing = AuctionListings.objects.get(pk=listing_id)
+    listing = AuctionListing.objects.get(pk=listing_id)
 
-    new_comment = Comments(content=user_comment, user=user, auction=listing)
+    new_comment = Comment(content=user_comment, user=user, auction=listing)
     new_comment.save()
 
     return HttpResponseRedirect(reverse("auctions/listings.html", kwarg={"id": listing_id}))
@@ -134,7 +134,7 @@ def bid(request, listing_id, user_id):
     user_bid = request.POST["bid"]
 
     while True:
-        if user_bid[0] in [., 0, 1, 2, 3, 4, 5, 6, 7, 8, 9] or len(user_bid) == 0:
+        if user_bid[0] in [".", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9] or len(user_bid) == 0:
             break
 
         user_bid = user_bid[1:]
@@ -142,7 +142,7 @@ def bid(request, listing_id, user_id):
     user = User.objects.get(pk=user_id)
     listing = AuctionListings.objects.get(pk=listing_id)
 
-    new_bid = Bids(price=user_bid, user=user, auction=listing)
+    new_bid = Bid(price=user_bid, user=user, auction=listing)
     new_bid.save()
 
     return HttpResponseRedirect(reverse("auctions/listings.html", kwarg={"id": listing_id}))

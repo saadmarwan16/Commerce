@@ -5,17 +5,17 @@
 {% endblock %}
 
 {% block body %}
-    <h3>Your listing has been created</h3>
+    <h3 class="listing-created">Your listing has been created</h3>
 
     <div class="container-fluid">
         <div class="row">
-            <div col-3>
+            <div class="col-lg-3 col-md-4 col-sm-5 col-12 listing-created-options">
                 <a href="{% url 'create_listing' %}">Create another listing</a>
             </div>
-            <div col-3>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-12 listing-created-options">
                 <a href="{% url 'index' %}">Go to home</a>
             </div>
-            <div col-3>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-12 listing-created-options">
                 <a href="{% url 'user_listings' user.id %}">View my listings</a>
             </div>
         </div>
