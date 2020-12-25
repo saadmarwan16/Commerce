@@ -1,17 +1,17 @@
-.topbar {
+/* .topbar {
     position: fixed;
     background-color: #440997e5;
     height: 50px;
     width: 100%;
-}
+} */
 
-.sub-topbar, .topbar-row {
+/* .sub-topbar, .topbar-row {
     height: 100%;
-}
+} */
 
-.home-link-container {
+/* .home-link-container {
     padding: 10px 15px;
-}
+} */
 
 .status {
     color: white;
@@ -38,7 +38,7 @@
     text-decoration: none;
 }
 
-.home-link {
+/* .home-link {
     color: white;
     margin: 10px;
     font-size: 25px;
@@ -49,7 +49,7 @@
 .home-link:hover {
     color: rgb(90, 241, 20);
     text-decoration: none;
-}
+} */
 
 .auctions {
     margin-top: 30px;
@@ -73,7 +73,7 @@
     padding-left: 0;
 }
 
-.search {
+/* .search {
     background-color: transparent !important;
     height: 40px;
     left: 30%;
@@ -96,7 +96,7 @@
     .search {
         left: 40%
     }
-}
+} */
 
 @media (max-width: 767px) {
     .side-menu {
@@ -104,9 +104,9 @@
     }
 }
 
-.search-bar, .search-button {
+/* .search-bar, .search-button {
     height: 30px;
-}
+} */
 
 .main-body-container {
     position: relative;
@@ -298,13 +298,13 @@
     padding-right: 0;
 }
 
-/* @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900'); */
+/* @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
 body{
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
     background: #eee;
     color:#666;
-}
+} */
 
 .login-container{
     height: calc(100vh - 50px);

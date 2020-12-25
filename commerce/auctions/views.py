@@ -9,7 +9,7 @@ from .models import User, AuctionListing, Bid, Comment, WatchList
 
 # Home page, this page displays the current active listings and their information
 def index(request):
-    return render(request, "auctions/index.html", {
+    return render(request, "auctions/main-layout.html", {
         "listings": AuctionListing.objects.all()
     })
 
