@@ -8,7 +8,7 @@
 
 <h2 align="center">Features</h2>
  
- <p><b>Models:</b> The applications has 5 models(tables): one for users, one for auction listings, one for bids, one for watchlist and one for comments made on auction listings.</p>
+ <p><b>Models:</b> The application has 5 models(tables): one for users, one for auction listings, one for bids, one for watchlist and one for comments made on auction listings.</p>
  
  <p><b>Login and Sign Up:</b> Users can register for a new account and also login into their account if they provide the right information.</p>
  
