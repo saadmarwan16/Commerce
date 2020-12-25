@@ -42,7 +42,7 @@ def logout_view(request):
     return HttpResponseRedirect(reverse("index"))
 
 
-# Either shows the register page of register a new user throug a post request
+# Shows a registration form and registers a user after the user is validated
 def register(request):
     if request.method == "POST":
         username = request.POST["username"]
@@ -71,8 +71,24 @@ def register(request):
         return render(request, "auctions/register.html")
 
 
-# Either shows the creating listing page to create a new listing or create a new listing
-def create_listing(request):
+# Either shows the creating listing page to create a new listing or create a new listing after a submit attempt
+# to create a new listing
+def create_listing(request, user_id):
+    if request.method == "POST":
+        name = request.POST["title"]
+        description = request.POST["description"]
+        category = request.POST["category"]
+        price = request.POST["bid"]
+        image = request.FILES["image"]
+
+        # Get the user who just created the listing
+        user = User.objects.get(pk=user_id)
+        
+        listing = AuctionListing(name=name, description=description, category=category, price=price, image=image, user=user)
+        listing.save()
+
+        return HttpResponseRedirect(reverse("listing_created"))
+
     return render(request, "auctions/create-listing.html")
 
 
@@ -101,20 +117,7 @@ def listing(request, id):
 
 
 # Creates listing and store it in the database
-def listing_created(request, user_id):
-    name = request.POST["title"]
-    description = request.POST["description"]
-    category = request.POST["category"]
-    price = request.POST["bid"]
-    image = request.FILES["image"]
-
-    # Get the user who just created the listing
-    print(user_id)
-    user = User.objects.get(pk=user_id)
-    
-    listing = AuctionListing(name=name, description=description, category=category, price=price, image=image, user=user)
-    listing.save()
-
+def listing_created(request):
     return render(request, "auctions/listing-created.html")
 
 

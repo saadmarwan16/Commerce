@@ -13,7 +13,7 @@
 
             <div class="col-12 col-md-8 listings">
                 <div class="d-flex justify-content-center align-items-center login-container">
-                    <form action="{% url 'listing_created' user.id %}" class="login-form text-center" method="post" enctype="multipart/form-data">
+                    <form action="{% url 'create_listing' user.id %}" class="login-form text-center" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
 
                         <h1 class="mb-5 font-weight-light text-uppercase">Create Listing</h1>
