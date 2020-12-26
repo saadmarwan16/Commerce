@@ -7,9 +7,8 @@
 } */
 
 .listing-profile-image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 0px 15%;
+    border: 1px solid rgba(0, 0, 0, 0.3);
     max-width: 70%;
 }
 
@@ -78,9 +77,13 @@
 }
 
 .watchlist-btn {
-    /* height: 10px; */
-    top: 40px;
-    right: 53%;
+    padding: 2px 12px;
+}
+
+.watchlist-container {
+    position: absolute;
+    top: 70px;
+    left: 140px;
 }
 
 .listing-details-heading {

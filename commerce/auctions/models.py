@@ -23,16 +23,24 @@ class AuctionListing(models.Model):
     highest_bidder = models.ForeignKey(User, on_delete=models.CASCADE, related_name="highest_bid", null=True, blank=True)
 
     def __str__(self):
-        return f"{self.user_id} posted {self.name} for {self.price} at {self.time_auctioned}"
+        return f"{self.listing_creator} posted {self.name} for {self.price} at {self.time_auctioned}"
 
-    def set_current_bid(self, bid):
+    def update_bid(self, bid, bidder):
         self.current_bid = bid
+        self.highest_bidder = bidder
         self.save()
 
     def close_listing(self):
         self.listing_winner = self.highest_bidder
         self.is_listing_closed = True
         self.save()
+
+    def is_watchlisted(user):
+        try:
+            result = AuctionListing.objects.get(watchlist="user")
+            return result
+        except AuctionListing.DoesNotExist:
+            return False
 
 
 class Bid(models.Model):

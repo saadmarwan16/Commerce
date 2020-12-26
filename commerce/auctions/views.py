@@ -10,7 +10,7 @@ from .models import User, AuctionListing, Bid, Comment
 # Home page, this page displays the current active listings and their information
 def index(request):
     return render(request, "auctions/index.html", {
-        "listings": AuctionListing.objects.all()
+        "listings": AuctionListing.objects.filter(is_listing_closed=False)
     })
 
 
@@ -73,16 +73,13 @@ def register(request):
 
 # Either shows the creating listing page to create a new listing or create a new listing after a submit attempt
 # to create a new listing
-def create_listing(request, user_id):
+def create_listing(request):
     if request.method == "POST":
         name = request.POST["title"]
         description = request.POST["description"]
         category = request.POST["category"]
         price = request.POST["bid"]
         image = request.FILES["image"]
-
-        # Get the user who just created the listing
-        user = User.objects.get(pk=user_id)
         
         listing = AuctionListing(
             name=name,
@@ -91,7 +88,7 @@ def create_listing(request, user_id):
             price=price,
             current_bid=price,
             image=image,
-            user=user
+            listing_creator=request.user
             )
 
         listing.save()
@@ -105,7 +102,8 @@ def categories(request):
     return render(request, "auctions/categories.html")
 
 
-def watchlist(request):
+def watchlist(request, listing_id):
+    listing = AuctionListing.objects.get(pk=listing_id)
     return render(request, "auctions/watchlist.html")
 
 
@@ -131,25 +129,35 @@ def listing_created(request):
 
 
 # Show all the listings that a user has created
-def user_listings(request, id):
+def user_listings(request):
     return render(request, "auctions/user-listings.html", {
-        "listings": AuctionListing.objects.filter(listing_creator=id)
+        "listings": AuctionListing.objects.filter(listing_creator=request.user)
     })
 
 
+def close_auction(request, listing_id):
+    listing = AuctionListing.objects.get(pk=listing_id)
+    listing.close_listing()
+
+    return HttpResponseRedirect(reverse("auction_closed"))
+
+
+def auction_closed(request):
+    return render(request, "auctions/auction-closed.html")
+
+
 # Takes a user's comment and then add it to the database
-def comment(request, listing_id, user_id):
+def comment(request, listing_id):
     user_comment = request.POST["comment"]
-    user = User.objects.get(pk=user_id)
     listing = AuctionListing.objects.get(pk=listing_id)
 
-    new_comment = Comment(content=user_comment, user=user, auction=listing)
+    new_comment = Comment(content=user_comment, user=request.user, auction=listing)
     new_comment.save()
 
     return HttpResponseRedirect(reverse("listing", kwargs={"id": listing_id}))
 
 
-def bid(request, listing_id, user_id):
+def bid(request, listing_id):
     user_bid = request.POST["bid"]
     user_bid = float(user_bid)
     listing = AuctionListing.objects.get(pk=listing_id)
@@ -159,21 +167,10 @@ def bid(request, listing_id, user_id):
     elif user_bid < listing.current_bid:
         raise Http404("You cannot bid less than the current bid")
 
-    # current_bid = Bid.objects.filter(auction_id__id=listing_id).order_by("-price")
-
-    # if len(current_bid) > 0:
-    #     current_bid = current_bid[0]
-
-    #     if user_bid < current_bid.price:
-    #         raise Http404("You cannot bid less than the current bid")
-
-    user = User.objects.get(pk=user_id)
-
-    new_bid = Bid(price=user_bid, user=user, auction=listing)
+    new_bid = Bid(price=user_bid, user=request.user, auction=listing)
     new_bid.save()
 
-    auction_current_bid = AuctionListing.objects.get(pk=listing_id)
-    auction_current_bid.set_current_bid(user_bid)
-    auction_current_bid.save()
+    current_bid = AuctionListing.objects.get(pk=listing_id)
+    current_bid.update_bid(user_bid, request.user)
 
     return HttpResponseRedirect(reverse("listing", kwargs={"id": listing_id}))
