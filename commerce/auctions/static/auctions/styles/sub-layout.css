@@ -1,12 +1,10 @@
 .menu {
     background-color: rgba(0, 0, 0, 0.5);
     position: relative;
-    /* height: calc(100vh - 50px); */
 }
 
 .side-menu {
     min-width: 250px;
-    height: 100%;
     position: fixed;
 }
 

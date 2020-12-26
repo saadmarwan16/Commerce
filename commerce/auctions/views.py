@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import User, AuctionListing, Bid, Comment, WatchList
+from .models import User, AuctionListing, Bid, Comment
 
 
 # Home page, this page displays the current active listings and their information
@@ -84,7 +84,16 @@ def create_listing(request, user_id):
         # Get the user who just created the listing
         user = User.objects.get(pk=user_id)
         
-        listing = AuctionListing(name=name, description=description, category=category, price=price, image=image, user=user)
+        listing = AuctionListing(
+            name=name,
+            description=description,
+            category=category,
+            price=price,
+            current_bid=price,
+            image=image,
+            user=user
+            )
+
         listing.save()
 
         return HttpResponseRedirect(reverse("listing_created"))
@@ -124,7 +133,7 @@ def listing_created(request):
 # Show all the listings that a user has created
 def user_listings(request, id):
     return render(request, "auctions/user-listings.html", {
-        "listings": AuctionListing.objects.filter(user_id=id)
+        "listings": AuctionListing.objects.filter(listing_creator=id)
     })
 
 
@@ -147,17 +156,24 @@ def bid(request, listing_id, user_id):
 
     if user_bid < listing.price:
         raise Http404("You cannot bid less than the price of the item")
+    elif user_bid < listing.current_bid:
+        raise Http404("You cannot bid less than the current bid")
 
-    current_bid = Bid.objects.filter(auction_id__id=listing_id).order_by("-price")
+    # current_bid = Bid.objects.filter(auction_id__id=listing_id).order_by("-price")
 
-    if len(current_bid) > 0:
-        current_bid = current_bid[0]
+    # if len(current_bid) > 0:
+    #     current_bid = current_bid[0]
 
-        if user_bid < current_bid.price:
-            raise Http404("You cannot bid less than the current bid")
+    #     if user_bid < current_bid.price:
+    #         raise Http404("You cannot bid less than the current bid")
 
     user = User.objects.get(pk=user_id)
+
     new_bid = Bid(price=user_bid, user=user, auction=listing)
     new_bid.save()
+
+    auction_current_bid = AuctionListing.objects.get(pk=listing_id)
+    auction_current_bid.set_current_bid(user_bid)
+    auction_current_bid.save()
 
     return HttpResponseRedirect(reverse("listing", kwargs={"id": listing_id}))

@@ -1,0 +1,53 @@
+.main-body-container {
+    min-height: calc(100vh - 50px);
+    position: relative;
+    top: 50px;
+}
+
+.main-body {
+    min-height: calc(100vh - 50px);
+}
+
+.listings {
+    text-align: center;
+}
+
+.listing {
+    border: 1px solid rgba(0, 0, 0, 0.411);
+    height: 350px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+}
+
+#active-listings {
+    margin-bottom: 25px;
+}
+
+.image-container {
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.info-container {
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.info {
+    width: 100%;
+    text-align: left;
+    padding-left: 10px;
+    color: #440997e5;
+}
+
+.info-top {
+    margin-top: 50px;
+    font-size: 25px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+}
