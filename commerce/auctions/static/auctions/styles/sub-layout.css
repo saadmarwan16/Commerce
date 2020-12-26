@@ -1,0 +1,52 @@
+.menu {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+    /* height: calc(100vh - 50px); */
+}
+
+.side-menu {
+    min-width: 250px;
+    height: 100%;
+    position: fixed;
+}
+
+.auctions {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: white;
+}
+
+.status {
+    color: white;
+    font-weight: bold;
+    margin-top: 15px;
+    padding-top: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+}
+
+.menu-list {
+    padding-left: 0;
+}
+
+@media (max-width: 767px) {
+    .side-menu {
+        position: static;
+    }
+}
+
+.list-item {
+    font-weight: bold;
+    list-style-type: none;
+    padding: 10px 0 10px 0;
+    margin: 10px 0 10px 0;
+}
+
+.list-link {
+    color: white;
+}
+
+.list-link:hover {
+    color: rgb(90, 241, 20);
+    text-decoration: none;
+}

@@ -8,14 +8,14 @@
 
 {% block body %}
     <div class="container-fluid main-body-container">
-        <div class="row">
+        <div class="row" style="height: 100%">
             <div class="col-12 col-md-4 menu">
                 {% include "auctions/sub-layout.html" %}
             </div>
 
             <div class="col-12 col-md-8 listings">
                 <h2 id="active-listings">Active Listings</h2>
-                {% for listing in listings %}
+                <!-- {% for listing in listings %}
                     <div class="listing">
                         <a href="{% url 'listing' listing.id %}">
                             {% if listing.image %}
@@ -35,7 +35,7 @@
                     </div>
                 {% empty %}
                     <h3>There are no active listings</h3>
-                {% endfor %}
+                {% endfor %} -->
             </div>
         </div>
     </div>

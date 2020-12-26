@@ -4,7 +4,7 @@ body{
     font-size: 16px;
     background: #eee;
     color:#666;
-    position: relative;
+    /* position: relative; */
     min-height: 100vh;
 }
 
@@ -13,6 +13,7 @@ body{
     background-color: #440997e5;
     height: 50px;
     width: 100%;
+    z-index: 1;
 }
 
 .sub-topbar, .topbar-row {
