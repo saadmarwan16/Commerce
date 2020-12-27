@@ -78,6 +78,7 @@
 
 .watchlist-btn {
     padding: 2px 12px;
+    font-size: 0.65rem;
 }
 
 .watchlist-container {
@@ -121,17 +122,11 @@
     right: 16px;
 }
 
-.comments {
-    text-align: left;
-    padding-left: 10px;
-}
-
 .comment {
-    list-style-type: none;
-    padding: 10px;
-    margin: 5px 0 5px 0;
-    border: 1px solid gray;
-    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+    border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
 /* .nav-item {

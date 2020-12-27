@@ -6,7 +6,7 @@
 
 {% block body %}
     <div class="container-fluid main-body-container">
-        <div class="row">
+        <div class="row main-body">
             <div class="col-12 col-md-4 menu">
                 {% include "auctions/sub-layout.html" %}
             </div>
@@ -17,16 +17,16 @@
                         {% csrf_token %}
 
                         <h1 class="mb-5 font-weight-light text-uppercase">Create Listing</h1>
-                        <div class="form-group">
+                        <div class="form-group item-input">
                             <input type="text" autofocus class="form-control rounded-pill form-control-lg" placeholder="Title of listing" name="title" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group item-input">
                             <input type="text" class="form-control rounded-pill form-control-lg" placeholder="Description of listing" name="description" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group item-input">
                             <input type="text" class="form-control rounded-pill form-control-lg" placeholder="Starting bid" name="bid" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group item-input">
                             <input class="form-control rounded-pill form-control-lg" name="category" list="categories" placeholder="Listing Category">
                             <datalist id="categories">
                                 <option value="Arts & Crafts">

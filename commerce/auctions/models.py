@@ -35,12 +35,10 @@ class AuctionListing(models.Model):
         self.is_listing_closed = True
         self.save()
 
-    def is_watchlisted(user):
-        try:
-            result = AuctionListing.objects.get(watchlist="user")
-            return result
-        except AuctionListing.DoesNotExist:
-            return False
+    def is_watchlisted(self, user_id, listing_id):
+        result = AuctionListing.objects.filter(id=listing_id, watchlist__id=user_id).count()
+
+        return result == 1
 
 
 class Bid(models.Model):

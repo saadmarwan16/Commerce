@@ -102,24 +102,41 @@ def categories(request):
     return render(request, "auctions/categories.html")
 
 
-def watchlist(request, listing_id):
+def watchlist(request):
+    return render(request, "auctions/watchlist.html", {
+        "listings": AuctionListing.objects.filter(watchlist__id=request.user.id)
+    })
+
+
+def watchlist_add(request, listing_id):
     listing = AuctionListing.objects.get(pk=listing_id)
-    return render(request, "auctions/watchlist.html")
+    listing.watchlist.add(request.user)
+
+    return HttpResponseRedirect(reverse("listing", kwargs={"id": listing_id}))
+
+
+def watchlist_remove(request, listing_id):
+    listing = AuctionListing.objects.get(pk=listing_id)
+    listing.watchlist.remove(request.user)
+
+    return HttpResponseRedirect(reverse("listing", kwargs={"id": listing_id}))
 
 
 def listing(request, id):
     user = User.objects.get(auctioned_items__id=id)
     comments = Comment.objects.filter(auction_id__id=id)
     current_bid = Bid.objects.filter(auction_id__id=id).order_by("-price")
+    item = AuctionListing.objects.get(pk=id)
 
     if len(current_bid) > 0:
         current_bid = current_bid[0]
     
     return render(request, "auctions/listing.html", {
-        "listing": AuctionListing.objects.get(pk=id),
+        "listing": item,
         "user_created": user.username,
         "comments": comments,
-        "current_bid": current_bid
+        "current_bid": current_bid,
+        "is_watchlisted": item.is_watchlisted(request.user.id, id)
     })
 
 

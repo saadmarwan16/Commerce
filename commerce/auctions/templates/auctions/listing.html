@@ -19,11 +19,19 @@
                 <div class="listing-profile-image-container">
                     {% if user.is_authenticated %}
                         <div class="watchlist-container">
-                            <form action="{% url 'watchlist' listing.id %}" method="post">
-                                {% csrf_token %}
-                                
-                                <button type="submit" class="watchlist-btn btn btn-success">Add to watchlist</button>
-                            </form>
+                            {% if is_watchlisted is False %}
+                                <form action="{% url 'watchlist_add' listing.id %}" method="post">
+                                    {% csrf_token %}
+                                    
+                                    <button type="submit" class="watchlist-btn btn btn-success">Add to watchlist</button>
+                                </form>
+                            {% else %}
+                                <form action="{% url 'watchlist_remove' listing.id %}" method="post">
+                                    {% csrf_token %}
+                                    
+                                    <button type="submit" class="watchlist-btn btn btn-success">Remove from watchlist</button>
+                                </form>
+                            {% endif %}
                         </div>
                     {% endif %}
 
@@ -106,13 +114,17 @@
                     {% endif %}
 
                     <h2 style="width: 100%; text-align: center">Comments</h2>
-                    <ul class="comments">
+                    <div class="container">
                         {% for comment in comments %}
-                            <li class="comment">{{ comment.content }}</li>
+                            <div class="jumbotron comment">
+                                {{ comment.content }}
+                            </div>
                         {% empty %}
-                            <li class="comment">This product has no comments</li>
+                            <div class="jumbotron comment">
+                                This product has no comments
+                            </div>
                         {% endfor %}
-                    </ul>
+                    </div>
                 </div>
             </div>
         </div>
