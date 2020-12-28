@@ -8,7 +8,7 @@
 
 {% block body %}
     <div class="container-fluid main-body-container">
-        <div class="row">
+        <div class="row main-body">
             <div class="col-12 col-md-4 menu">
                 {% include "auctions/sub-layout.html" %}
             </div>
@@ -43,9 +43,6 @@
                 </div>
 
                 <div class="listing-main-details">
-                    <!-- {% if user.is_authenticated %}
-                        <button type="submit" class="watchlist-btn btn btn-success">Add to watchlist</button>
-                    {% endif %} -->
                     <div class="listing-sub-details">
                         <p><strong>Price: </strong>${{ listing.price }}</p>
                         <p><strong>Listed by: </strong>{{ user_created }}</p>
@@ -60,7 +57,7 @@
                     <p class="bids-placed">
                         <strong>
                             {% if current_bid %}
-                                The current bid is ${{ current_bid.price }}
+                                The current bid is ${{ current_bid }}
                             {% else %}
                                 There is currently no bid
                             {% endif %}

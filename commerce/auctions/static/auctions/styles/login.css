@@ -1,8 +1,13 @@
 .login-container{
     position: relative;
-    top: 0px;
+    top: 50px;
     height: calc(100vh - 50px);
     width: 100%;
+}
+
+.create-listing {
+    position: relative;
+    top: 0px;
 }
 
 .login-form{

@@ -44,6 +44,12 @@ body{
     text-decoration: none;
 }
 
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .search {
     background-color: transparent !important;
     height: 100%;
@@ -56,10 +62,32 @@ body{
     height: 100%;
 }
 
-@media (min-width: 0px) {
+@media (max-width: 575px) {
     .search-bar {
-        width: 250px;
+        width: 40%;
         margin-right: 10px;
+    }
+
+    .long-search-bar {
+        display: none !important;
+    }
+
+    .short-search-bar {
+        display: block !important;
+    }
+}
+
+@media (min-width: 576px) {
+    .search-bar {
+        margin-right: 10px;
+    }
+
+    .long-search-bar {
+        display: block !important;
+    }
+
+    .short-search-bar {
+        display: none !important;
     }
 }
 
