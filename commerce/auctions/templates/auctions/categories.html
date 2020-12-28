@@ -20,8 +20,13 @@
                             <img class="category-image" src="{% static 'auctions/images/arts-and-crafts.jpg' %}">
                         </div>
                         <div class="category-info">
-                            <div style="height: 50%;">Arts & Crafts</div>
-                            <div class="category-btn-container"><button class="btn btn-success">View Category</button></div>
+                            <div class="category-name">Arts & Crafts</div>
+                            <form action="{% url 'categories' %}" method="post">
+                                {% csrf_token %}
+
+                                <input class="category-input" name="name" value="Arts & Crafts">
+                                <div class="category-btn-container"><button class="btn btn-success btn-sm btn-block">View Category</button></div>
+                            </form>
                         </div>
                     </div>
 
@@ -30,8 +35,13 @@
                             <img class="category-image" src="{% static 'auctions/images/automotive.jpg' %}">
                         </div>
                         <div class="category-info">
-                            <div style="height: 50%;">Automotive</div>
-                            <div class="category-btn-container"><button class="btn btn-success">View Category</button></div>
+                            <div class="category-name">Automotive</div>
+                            <form action="{% url 'categories' %}" method="post">
+                                {% csrf_token %}
+                                
+                                <input class="category-input" name="name" value="Automotive">
+                                <div class="category-btn-container"><button class="btn btn-success btn-sm btn-block">View Category</button></div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -42,8 +52,13 @@
                             <img class="category-image" src="{% static 'auctions/images/baby.jpg' %}">
                         </div>
                         <div class="category-info">
-                            <div style="height: 50%;">Baby</div>
-                            <div class="category-btn-container"><button class="btn btn-success">View Category</button></div>
+                            <div class="category-name">Baby</div>
+                            <form action="{% url 'categories' %}" method="post">
+                                {% csrf_token %}
+                                
+                                <input class="category-input" name="name" value="Baby">
+                                <div class="category-btn-container"><button class="btn btn-success btn-sm btn-block">View Category</button></div>
+                            </form>
                         </div>
                     </div>
                     <div class="col-6 category">
@@ -51,8 +66,13 @@
                             <img class="category-image" src="{% static 'auctions/images/beauty-and-personal-care.jpg' %}">
                         </div>
                         <div class="category-info">
-                            <div style="height: 50%;">Beauty and Personal Care</div>
-                            <div class="category-btn-container"><button class="btn btn-success">View Category</button></div>
+                            <div class="category-name">Beauty and Personal Care</div>
+                            <form action="{% url 'categories' %}" method="post">
+                                {% csrf_token %}
+                                
+                                <input class="category-input" name="name" value="Beauty and Personal Care">
+                                <div class="category-btn-container"><button class="btn btn-success btn-sm btn-block">View Category</button></div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -63,8 +83,13 @@
                             <img class="category-image" src="{% static 'auctions/images/computers.jpg' %}">
                         </div>
                         <div class="category-info">
-                            <div style="height: 50%;">Computers</div>
-                            <div class="category-btn-container"><button class="btn btn-success">View Category</button></div>
+                            <div class="category-name">Computers</div>
+                            <form action="{% url 'categories' %}" method="post">
+                                {% csrf_token %}
+                                
+                                <input class="category-input" name="name" value="Computers">
+                                <div class="category-btn-container"><button class="btn btn-success btn-sm btn-block">View Category</button></div>
+                            </form>
                         </div>
                     </div>
                     <div class="col-6 category">
@@ -72,8 +97,13 @@
                             <img class="category-image" src="{% static 'auctions/images/electronics.jpg' %}">
                         </div>
                         <div class="category-info">
-                            <div style="height: 50%;">Electronics</div>
-                            <div class="category-btn-container"><button class="btn btn-success">View Category</button></div>
+                            <div class="category-name">Electronics</div>
+                            <form action="{% url 'categories' %}" method="post">
+                                {% csrf_token %}
+                                
+                                <input class="category-input" name="name" value="Electronics">
+                                <div class="category-btn-container"><button class="btn btn-success btn-sm btn-block">View Category</button></div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -84,8 +114,13 @@
                             <img class="category-image" src="{% static 'auctions/images/fashion.jpg' %}">
                         </div>
                         <div class="category-info">
-                            <div style="height: 50%;">Fashion</div>
-                            <div class="category-btn-container"><button class="btn btn-success">View Category</button></div>
+                            <div class="category-name">Fashion</div>
+                            <form action="{% url 'categories' %}" method="post">
+                                {% csrf_token %}
+                                
+                                <input class="category-input" name="name" value="Fashion">
+                                <div class="category-btn-container"><button class="btn btn-success btn-sm btn-block">View Category</button></div>
+                            </form>
                         </div>
                     </div>
                     <div class="col-6 category">
@@ -93,8 +128,13 @@
                             <img class="category-image" src="{% static 'auctions/images/health-and-household.jpg' %}">
                         </div>
                         <div class="category-info">
-                            <div style="height: 50%;">Health and Household</div>
-                            <div class="category-btn-container"><button class="btn btn-success">View Category</button></div>
+                            <div class="category-name">Health and Household</div>
+                            <form action="{% url 'categories' %}" method="post">
+                                {% csrf_token %}
+                                
+                                <input class="category-input" name="name" value="Health and Household">
+                                <div class="category-btn-container"><button class="btn btn-success btn-sm btn-block">View Category</button></div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -105,8 +145,13 @@
                             <img class="category-image" src="{% static 'auctions/images/home-and-kitchen.jpg' %}">
                         </div>
                         <div class="category-info">
-                            <div style="height: 50%;">Home and Kitchen</div>
-                            <div class="category-btn-container"><button class="btn btn-success">View Category</button></div>
+                            <div class="category-name">Home and Kitchen</div>
+                            <form action="{% url 'categories' %}" method="post">
+                                {% csrf_token %}
+                                
+                                <input class="category-input" name="name" value="Home and Kitchen">
+                                <div class="category-btn-container"><button class="btn btn-success btn-sm btn-block">View Category</button></div>
+                            </form>
                         </div>
                     </div>
                     <div class="col-6 category">
@@ -114,8 +159,13 @@
                             <img class="category-image" src="{% static 'auctions/images/industrial-and-scientific.jpg' %}">
                         </div>
                         <div class="category-info">
-                            <div style="height: 50%;">Industrial and Scientific</div>
-                            <div class="category-btn-container"><button class="btn btn-success">View Category</button></div>
+                            <div class="category-name">Industrial and Scientific</div>
+                            <form action="{% url 'categories' %}" method="post">
+                                {% csrf_token %}
+                                
+                                <input class="category-input" name="name" value="Industrial and Scientific">
+                                <div class="category-btn-container"><button class="btn btn-success btn-sm btn-block">View Category</button></div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -126,8 +176,13 @@
                             <img class="category-image" src="{% static 'auctions/images/movies-and-television.jpg' %}">
                         </div>
                         <div class="category-info">
-                            <div style="height: 50%;">Movies and Television</div>
-                            <div class="category-btn-container"><button class="btn btn-success">View Category</button></div>
+                            <div class="category-name">Movies and Television</div>
+                            <form action="{% url 'categories' %}" method="post">
+                                {% csrf_token %}
+                                
+                                <input class="category-input" name="name" value="Movies and Television">
+                                <div class="category-btn-container"><button class="btn btn-success btn-sm btn-block">View Category</button></div>
+                            </form>
                         </div>
                     </div>
                     <div class="col-6 category">
@@ -135,8 +190,13 @@
                             <img class="category-image" src="{% static 'auctions/images/pet-supplies.jpg' %}">
                         </div>
                         <div class="category-info">
-                            <div style="height: 50%;">Pet supplies</div>
-                            <div class="category-btn-container"><button class="btn btn-success">View Category</button></div>
+                            <div class="category-name">Pet supplies</div>
+                            <form action="{% url 'categories' %}" method="post">
+                                {% csrf_token %}
+                                
+                                <input class="category-input" name="name" value="Pet supplies">
+                                <div class="category-btn-container"><button class="btn btn-success btn-sm btn-block">View Category</button></div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -147,8 +207,13 @@
                             <img class="category-image" src="{% static 'auctions/images/software.jpg' %}">
                         </div>
                         <div class="category-info">
-                            <div style="height: 50%;">Software</div>
-                            <div class="category-btn-container"><button class="btn btn-success">View Category</button></div>
+                            <div class="category-name">Software</div>
+                            <form action="{% url 'categories' %}" method="post">
+                                {% csrf_token %}
+                                
+                                <input class="category-input" name="name" value="Software">
+                                <div class="category-btn-container"><button class="btn btn-success btn-sm btn-block">View Category</button></div>
+                            </form>
                         </div>
                     </div>
                     <div class="col-6 category">
@@ -156,8 +221,13 @@
                             <img class="category-image" src="{% static 'auctions/images/sports-and-outdoors.jpg' %}">
                         </div>
                         <div class="category-info">
-                            <div style="height: 50%;">Sports and Outdoors</div>
-                            <div class="category-btn-container"><button class="btn btn-success">View Category</button></div>
+                            <div class="category-name">Sports and Outdoors</div>
+                            <form action="{% url 'categories' %}" method="post">
+                                {% csrf_token %}
+                                
+                                <input class="category-input" name="name" value="Sports and Outdoors">
+                                <div class="category-btn-container"><button class="btn btn-success btn-sm btn-block">View Category</button></div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -168,8 +238,13 @@
                             <img class="category-image" src="{% static 'auctions/images/tools-and-home-improvements.jpg' %}">
                         </div>
                         <div class="category-info">
-                            <div style="height: 50%;">Tools and Home Improvements</div>
-                            <div class="category-btn-container"><button class="btn btn-success">View Category</button></div>
+                            <div class="category-name">Tools and Home Improvements</div>
+                            <form action="{% url 'categories' %}" method="post">
+                                {% csrf_token %}
+                                
+                                <input class="category-input" name="name" value="Tools and Home Improvements">
+                                <div class="category-btn-container"><button class="btn btn-success btn-sm btn-block">View Category</button></div>
+                            </form>
                         </div>
                     </div>
                     <div class="col-6 category">
@@ -177,8 +252,13 @@
                             <img class="category-image" src="{% static 'auctions/images/toys.jpg' %}">
                         </div>
                         <div class="category-info">
-                            <div style="height: 50%;">Toys</div>
-                            <div class="category-btn-container"><button class="btn btn-success">View Category</button></div>
+                            <div class="category-name">Toys</div>
+                            <form action="{% url 'categories' %}" method="post">
+                                {% csrf_token %}
+                                
+                                <input class="category-input" name="name" value="Toys">
+                                <div class="category-btn-container"><button class="btn btn-success btn-sm btn-block">View Category</button></div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -189,8 +269,13 @@
                             <img class="category-image" src="{% static 'auctions/images/video-games.jpg' %}">
                         </div>
                         <div class="category-info">
-                            <div style="height: 50%;">Video Games</div>
-                            <div class="category-btn-container"><button class="btn btn-success">View Category</button></div>
+                            <div class="category-name">Video Games</div>
+                            <form action="{% url 'categories' %}" method="post">
+                                {% csrf_token %}
+                                
+                                <input class="category-input" name="name" value="Video Games">
+                                <div class="category-btn-container"><button class="btn btn-success btn-sm btn-block">View Category</button></div>
+                            </form>
                         </div>
                     </div>
                 </div>

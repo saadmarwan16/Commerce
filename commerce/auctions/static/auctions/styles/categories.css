@@ -1,15 +1,35 @@
+/* .category {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+} */
+
 .category-container {
-    margin-bottom: 50px;
+    margin-top: 50px;
+    margin-bottom: 10px;
 }
 
 .category-image-container {
     width: 100%;
-    height: 80%;
+    height: 70%;
+}
+
+.category-info {
+    width: 100%;
+    height: 30%;
 }
 
 .category-image {
     width: 100%;
     height: 100%;
+}
+
+.category-name {
+    font-size: 25px;
+    padding: 10px;
+    height: 50%;
+}
+
+.category-input {
+    display: none;
 }
 
 .category-btn-container {

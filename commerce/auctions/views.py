@@ -99,6 +99,16 @@ def create_listing(request):
 
 
 def categories(request):
+    if request.method == "POST":
+        category = request.POST["name"]
+
+        print(category)
+
+        return render(request, "auctions/view-category.html", {
+            "listings": AuctionListing.objects.filter(category=category, is_listing_closed=False),
+            "category": category
+        })
+
     return render(request, "auctions/categories.html")
 
 
