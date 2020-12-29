@@ -1,0 +1,36 @@
+.category-container {
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.category-image-container {
+    width: 100%;
+    height: 70%;
+}
+
+.category-info {
+    width: 100%;
+    height: 30%;
+}
+
+.category-image {
+    width: 100%;
+    height: 100%;
+}
+
+.category-name {
+    font-size: 25px;
+    padding: 10px;
+    height: 50%;
+}
+
+.category-input {
+    display: none;
+}
+
+.category-btn-container {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

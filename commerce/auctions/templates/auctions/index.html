@@ -8,7 +8,7 @@
 
 {% block body %}
     <div class="container-fluid main-body-container">
-        <div class="row">
+        <div class="row main-body">
             <div class="col-12 col-md-4 menu">
                 {% include "auctions/sub-layout.html" %}
             </div>
@@ -28,7 +28,8 @@
                                 <p class="info info-top"><strong>{{ listing.name }}</strong></p>
                                 <p class="info"><strong>Category: </strong>{{ listing.category }}</p>
                                 <p class="info"><strong>Description: </strong>{{ listing.description }}</p>
-                                <p class="info"><strong>Price: </strong>${{ listing.price }}</p>
+                                <p class="info"><strong>Original Price: </strong>${{ listing.price }}</p>
+                                <p class="info"><strong>Current Bid: </strong>${{ listing.current_bid }}</p>
                                 <p class="info"><strong>Date Created: </strong>{{ listing.time_auctioned }}</p>
                             </div>
                         </a>

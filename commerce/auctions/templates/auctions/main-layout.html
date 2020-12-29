@@ -4,19 +4,29 @@
 <html lang="en">
     <head>
         <title>{% block title %}{% endblock %} - Auctions</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+        <link href="{% static 'auctions/styles/index.css' %}" rel="stylesheet">
+        <link href="{% static 'auctions/styles/styles.css' %}" rel="stylesheet">
+        <link href="{% static 'auctions/styles/login.css' %}" rel="stylesheet">
+        <link href="{% static 'auctions/styles/categories.css' %}" rel="stylesheet">
+        <link href="{% static 'auctions/styles/sub-layout.css' %}" rel="stylesheet">
+        <link href="{% static 'auctions/styles/main-layout.css' %}" rel="stylesheet">
     </head>
     <body>
         <div class="topbar">
             <div class="container-fluid sub-topbar">
                 <div class="row topbar-row">
-                    <div class="col-lg-1 col-md-2 col-sm-3 home-link-container"><a class="home-link" href="{% url 'index' %}">Home</a></div>
+                    <div class="col-lg-1 col-2 home-link-container"><a class="home-link" href="{% url 'index' %}">Home</a></div>
     
-                    <div class="col-lg-11 col-md-10 col-sm-9">
+                    <div class="col-lg-11 col-10 search-container">
                         <nav class="navbar navbar-light bg-light search">
-                            <form class="form-inline">
-                                <input class="form-control mr-sm-2 search-bar" type="search" placeholder="Search active listings" aria-label="Search">
+                            <form class="form-inline search-form">
+                                <input class="form-control mr-sm-2 long-search-bar search-bar" type="search" placeholder="Search active listings" aria-label="Search">
+                                <input class="form-control mr-sm-2 short-search-bar search-bar" type="search" placeholder="Search" aria-label="Search">
                                 <button class="btn btn-outline-success my-2 my-sm-0 search-button" type="submit">Search</button>
                              </form>
                         </nav>

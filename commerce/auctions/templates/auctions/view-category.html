@@ -1,7 +1,9 @@
 {% extends "auctions/main-layout.html" %}
 
+{% load static %}
+
 {% block title %}
-    My Watchlist
+    {{ category }}
 {% endblock %}
 
 {% block body %}
@@ -12,7 +14,7 @@
             </div>
 
             <div class="col-12 col-md-8 listings">
-                <h2 id="active-listings">My Watchlist</h2>
+                <h2 id="active-listings">Active Listings</h2>
                 {% for listing in listings %}
                     <div class="listing">
                         <a href="{% url 'listing' listing.id %}">
@@ -33,7 +35,7 @@
                         </a>
                     </div>
                 {% empty %}
-                    <h3>You have no listings in your watchlist</h3>
+                    <h3>There are no active listings in this category</h3>
                 {% endfor %}
             </div>
         </div>
